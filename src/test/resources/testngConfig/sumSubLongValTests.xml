@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="sumSubLongValTests" verbose="1">
+    <test name="sumSubLongValTest">
+        <classes>
+            <class name="ru.training.at.hw1.SubtractLongValTest"/>
+            <class name="ru.training.at.hw1.SumLongValTest"/>
+        </classes>
+    </test>
+</suite>
