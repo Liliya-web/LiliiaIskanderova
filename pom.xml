@@ -4,8 +4,6 @@
   <groupId>ru.training.at</groupId>
   <artifactId>LiliiaIskanderova</artifactId>
   <version>2021.06.10-SNAPSHOT</version>
-  <name>homework1</name>
-  <url>http://maven.apache.org</url>
 
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
@@ -13,6 +11,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <testng.version>7.4.0</testng.version>
     <calculator.version>1</calculator.version>
+    <selenium-java.version>3.141.59</selenium-java.version>
+    <selenium-chrome-driver.version>3.141.59</selenium-chrome-driver.version>
+    <webdrivermanager.version>4.4.3</webdrivermanager.version>
     <checkstyle.version>8.42</checkstyle.version>
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
   </properties>
@@ -31,6 +32,24 @@
       <version>${calculator.version}</version>
       <scope>system</scope>
       <systemPath>${project.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium-java.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-chrome-driver</artifactId>
+      <version>${selenium-chrome-driver.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>${webdrivermanager.version}</version>
     </dependency>
 
   </dependencies>
@@ -76,7 +95,7 @@
         <version>3.0.0-M5</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/allLongValTests.xml</suiteXmlFile>
+            <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/HW2AllTests.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>
@@ -85,7 +104,7 @@
 
   <profiles>
     <profile>
-      <id>sumSubTests</id>
+      <id>HW1SumSubTests</id>
       <build>
         <plugins>
           <plugin>
@@ -103,7 +122,7 @@
     </profile>
 
     <profile>
-      <id>multDivTests</id>
+      <id>HW1MultDivTests</id>
       <build>
         <plugins>
           <plugin>
@@ -121,7 +140,7 @@
     </profile>
 
     <profile>
-      <id>allTests</id>
+      <id>HW1AllTests</id>
       <build>
         <plugins>
           <plugin>
@@ -131,6 +150,24 @@
             <configuration>
               <suiteXmlFiles>
                 <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/allLongValTests.xml</suiteXmlFile>
+              </suiteXmlFiles>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>HW2AllTests</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M5</version>
+            <configuration>
+              <suiteXmlFiles>
+                <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/HW2AllTests.xml</suiteXmlFile>
               </suiteXmlFiles>
             </configuration>
           </plugin>
