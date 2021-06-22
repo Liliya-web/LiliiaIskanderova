@@ -16,6 +16,10 @@ import org.testng.annotations.Test;
 public class Exercise1Tests {
 
     private WebDriver driver;
+    private static final String URL = "https://jdi-testing.github.io/jdi-light/index.html";
+    private static final String USERNAME = "Roman";
+    private static final String PASSWORD = "Jdi1234";
+
 
     @BeforeTest
     public void setUp() {
@@ -35,8 +39,7 @@ public class Exercise1Tests {
     @Test
     public void exercise1Test() {
         //        1. Open test site
-        String url = "https://jdi-testing.github.io/jdi-light/index.html";
-        driver.navigate().to(url);
+        driver.navigate().to(URL);
 
         //        2. Assert Browser title
         assertEquals(driver.getTitle(), "Home Page");
@@ -46,8 +49,8 @@ public class Exercise1Tests {
         openLoginField.click();
         WebElement username = driver.findElement(By.id("name"));
         WebElement password = driver.findElement(By.id("password"));
-        username.sendKeys("Roman");
-        password.sendKeys("Jdi1234");
+        username.sendKeys(USERNAME);
+        password.sendKeys(PASSWORD);
         WebElement login = driver.findElement(By.id("login-button"));
         login.click();
 
