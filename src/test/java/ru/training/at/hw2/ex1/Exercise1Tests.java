@@ -105,8 +105,6 @@ public class Exercise1Tests {
 
         //        10. Switch to original window back
         driver.switchTo().defaultContent();
-        WebElement mainContent = driver.findElement(By.cssSelector("div[class=\"main-content\"]"));
-        mainContent.click();
 
         //        11. Assert that there are 5 items in the Left Section are displayed and they have proper text
         //        (duplicate for step 5 except “Elements packs” section
