@@ -60,8 +60,7 @@ public class Exercise2Tests {
             driver.findElement(By.cssSelector("a[data-toggle=\"dropdown\"]"));
         serviceMenu.click();
         WebElement differentElementsMenu =
-            driver.findElement(By.xpath(
-                "//a[text()='Different elements']"));
+            driver.findElement(By.xpath("//a[text()='Different elements']"));
         differentElementsMenu.click();
 
         //        6. Select checkboxes Water, Wind
