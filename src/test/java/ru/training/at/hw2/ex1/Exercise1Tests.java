@@ -57,55 +57,42 @@ public class Exercise1Tests {
 
         //        5. Assert that four menu items with proper headers are displayed
         //        Home
-        WebElement homeMenuHead =
-            driver.findElement(By.xpath("//a[text()='Home']"));
+        WebElement homeMenuHead = driver.findElement(By.xpath("//a[text()='Home']"));
         assertEquals(homeMenuHead.getText(), "HOME");
         //        Contact form
-        WebElement contactFormMenuHead =
-            driver.findElement(By.xpath("//a[text()='Contact form']"));
+        WebElement contactFormMenuHead = driver.findElement(By.xpath("//a[text()='Contact form']"));
         assertEquals(contactFormMenuHead.getText(), "CONTACT FORM");
         //        Service xpath //a[text()=' Service '] isn't working
-        WebElement servicesMenuHead =
-            driver.findElement(By.cssSelector("a[data-toggle=\"dropdown\"]"));
+        WebElement servicesMenuHead = driver.findElement(By.cssSelector("a[data-toggle=\"dropdown\"]"));
         assertEquals(servicesMenuHead.getText(), "SERVICE");
         //        Metals & Colors
-        WebElement metalsAndColorsMenuHead =
-            driver.findElement(By.xpath("//a[text()='Metals & Colors']"));
+        WebElement metalsAndColorsMenuHead = driver.findElement(By.xpath("//a[text()='Metals & Colors']"));
         assertEquals(metalsAndColorsMenuHead.getText(), "METALS & COLORS");
 
         //        6. Assert that there are 4 images on the Index Page and they are displayed
         //        Image 1
-        driver.findElement(
-            By.xpath("//span[@class=\"icons-benefit icon-practise\"]"));
+        driver.findElement(By.xpath("//span[@class=\"icons-benefit icon-practise\"]"));
         //        Image 2
-        driver.findElement(
-            By.xpath("//span[@class=\"icons-benefit icon-custom\"]"));
+        driver.findElement(By.xpath("//span[@class=\"icons-benefit icon-custom\"]"));
         //        Image 3
-        driver.findElement(
-            By.xpath("//span[@class=\"icons-benefit icon-multi\"]"));
+        driver.findElement(By.xpath("//span[@class=\"icons-benefit icon-multi\"]"));
         //        Image 4
-        driver.findElement(
-            By.xpath("//span[@class=\"icons-benefit icon-multi\"]"));
+        driver.findElement(By.xpath("//span[@class=\"icons-benefit icon-base\"]"));
 
         //        7. Assert that there are 4 texts on the Index Page under icons and they have proper text
         //        Text 1
         WebElement textUnderMicroscope =
-            driver.findElement(
-                By.xpath("//span[contains(text(), 'To include good practices')]"));
+            driver.findElement(By.xpath("//span[contains(text(), 'To include good practices')]"));
         assertEquals(textUnderMicroscope.getText(), "To include good practices\nand ideas from successful\n"
             + "EPAM project");
         //        Text 2
-        WebElement textUnderHeadphones =
-            driver.findElement(By.xpath("//span[contains(text(), 'To be flexible')]"));
+        WebElement textUnderHeadphones = driver.findElement(By.xpath("//span[contains(text(), 'To be flexible')]"));
         assertEquals(textUnderHeadphones.getText(), "To be flexible and\ncustomizable");
         //        Text 3
-        WebElement textUnderMonitor =
-            driver.findElement(
-                By.xpath("//span[contains(text(), 'To be multiplatform')]"));
+        WebElement textUnderMonitor = driver.findElement(By.xpath("//span[contains(text(), 'To be multiplatform')]"));
         assertEquals(textUnderMonitor.getText(), "To be multiplatform");
         //        Text 4
-        WebElement textUnderRocket = driver.findElement(
-            By.xpath("//span[contains(text(), 'Already have good base')]"));
+        WebElement textUnderRocket = driver.findElement(By.xpath("//span[contains(text(), 'Already have good base')]"));
         assertEquals(textUnderRocket.getText(), "Already have good base\n(about 20 internal and\n"
             + "some external projects),\nwish to get more…");
 
@@ -124,24 +111,19 @@ public class Exercise1Tests {
         //        11. Assert that there are 5 items in the Left Section are displayed and they have proper text
         //        (duplicate for step 5 except “Elements packs” section
         //        Home
-        WebElement homeMenuLeft =
-            driver.findElement(By.xpath("//span[text()='Home']"));
+        WebElement homeMenuLeft = driver.findElement(By.xpath("//span[text()='Home']"));
         assertEquals(homeMenuLeft.getText(), "Home");
         //        Contact form
-        WebElement contactFormMenuLeft =
-            driver.findElement(By.xpath("//span[text()='Contact form']"));
+        WebElement contactFormMenuLeft = driver.findElement(By.xpath("//span[text()='Contact form']"));
         assertEquals(contactFormMenuLeft.getText(), "Contact form");
         //        Service
-        WebElement serviceMenuLeft =
-            driver.findElement(By.xpath("//span[text()='Service']"));
+        WebElement serviceMenuLeft = driver.findElement(By.xpath("//span[text()='Service']"));
         assertEquals(serviceMenuLeft.getText(), "Service");
         //        Metals & Colors
-        WebElement metalsAndColorsMenuLeft =
-            driver.findElement(By.xpath("//span[text()='Metals & Colors']"));
+        WebElement metalsAndColorsMenuLeft = driver.findElement(By.xpath("//span[text()='Metals & Colors']"));
         assertEquals(metalsAndColorsMenuLeft.getText(), "Metals & Colors");
         //        Elements packs
-        WebElement elementsPacksMenuLeft =
-            driver.findElement(By.xpath("//span[text()='Elements packs']"));
+        WebElement elementsPacksMenuLeft = driver.findElement(By.xpath("//span[text()='Elements packs']"));
         assertEquals(elementsPacksMenuLeft.getText(), "Elements packs");
     }
 }

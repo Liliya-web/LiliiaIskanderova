@@ -56,35 +56,25 @@ public class Exercise2Tests {
         assertEquals(usernameDisplayed.getText(), "ROMAN IOVLEV");
 
         //        5. Open through the header menu Service -> Different Elements Page
-        WebElement serviceMenu =
-            driver.findElement(By.cssSelector("a[data-toggle=\"dropdown\"]"));
+        WebElement serviceMenu = driver.findElement(By.cssSelector("a[data-toggle=\"dropdown\"]"));
         serviceMenu.click();
-        WebElement differentElementsMenu =
-            driver.findElement(By.xpath(
-                "//a[text()='Different elements']"));
+        WebElement differentElementsMenu = driver.findElement(By.xpath("//a[text()='Different elements']"));
         differentElementsMenu.click();
 
         //        6. Select checkboxes Water, Wind
-        WebElement waterCheckbox =
-            driver
-                .findElement(By.cssSelector("label:nth-child(1) > input[type=checkbox]"));
+        WebElement waterCheckbox = driver.findElement(By.cssSelector("label:nth-child(1) > input[type=checkbox]"));
         waterCheckbox.click();
-        WebElement windCheckbox =
-            driver
-                .findElement(By.cssSelector("label:nth-child(3) > input[type=checkbox]"));
+        WebElement windCheckbox = driver.findElement(By.cssSelector("label:nth-child(3) > input[type=checkbox]"));
         windCheckbox.click();
 
         //        7. Select radio Selen
-        WebElement selenRadio =
-            driver.findElement(By.cssSelector("label:nth-child(4) > input[type=radio]"));
+        WebElement selenRadio = driver.findElement(By.cssSelector("label:nth-child(4) > input[type=radio]"));
         selenRadio.click();
 
         //        8. Select in dropdown Yellow
-        WebElement dropdown =
-            driver.findElement(By.cssSelector("select[class=\"uui-form-element\"]"));
+        WebElement dropdown = driver.findElement(By.cssSelector("select[class=\"uui-form-element\"]"));
         dropdown.click();
-        WebElement yellow =
-            driver.findElement(By.xpath("//option[text()='Yellow']"));
+        WebElement yellow = driver.findElement(By.xpath("//option[text()='Yellow']"));
         yellow.click();
 
         //        9. Assert that:
@@ -92,8 +82,7 @@ public class Exercise2Tests {
         //    • for radio button there is a log row and value is corresponded to the status of radio button
         //    • for dropdown there is a log row and value is corresponded to the selected value
         //        Yellow
-        WebElement colors =
-            driver.findElement(By.xpath("//li[contains(text(), 'Yellow')]"));
+        WebElement colors = driver.findElement(By.xpath("//li[contains(text(), 'Yellow')]"));
         assertTrue(colors.getText().contains("Colors: value changed to Yellow"));
         //        Selen - little bag. "Metal" does not start with the capital letter
         WebElement metal = driver.findElement(By.xpath("//li[contains(text(), 'Selen')]"));
