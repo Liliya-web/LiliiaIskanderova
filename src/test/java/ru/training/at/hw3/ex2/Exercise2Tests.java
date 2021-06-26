@@ -42,12 +42,12 @@ public class Exercise2Tests extends BaseTest {
         //    • for radio button there is a log row and value is corresponded to the status of radio button
         //    • for dropdown there is a log row and value is corresponded to the selected value
         //        Yellow
-        assertEquals(new PageObject(driver).log1Color(), "Colors: value changed to Yellow");
+        assertTrue(new PageObject().log1Color().contains("Colors: value changed to Yellow"));
         //        Selen - little bag. "Metal" does not start with the capital letter
-        assertEquals(new PageObject(driver).log2Metal(), "metal: value changed to Selen");
+        assertTrue(new PageObject().log2Metal().contains("metal: value changed to Selen"));
         //        Wind
-        assertEquals(new PageObject(driver).log3Wind(), "Wind: condition changed to true");
+        assertTrue(new PageObject().log3Wind().contains("Wind: condition changed to true"));
         //        Water
-        assertEquals(new PageObject(driver).log4Water(), "Water: condition changed to true");
+        assertTrue(new PageObject().log4Water().contains("Water: condition changed to true"));
     }
 }

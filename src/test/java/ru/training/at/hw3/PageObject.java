@@ -200,19 +200,19 @@ public class PageObject {
     }
 
     public String log1Color() {
-        return log1Colors.getText().substring(9);
+        return log1Colors.getText();
     }
 
     public String log2Metal() {
-        return log2Metal.getText().substring(9);
+        return log2Metal.getText();
     }
 
     public String log3Wind() {
-        return log3Wind.getText().substring(9);
+        return log3Wind.getText();
     }
 
     public String log4Water() {
-        return log4Water.getText().substring(9);
+        return log4Water.getText();
     }
 
 }
