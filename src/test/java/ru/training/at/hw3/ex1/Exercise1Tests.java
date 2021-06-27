@@ -47,8 +47,7 @@ public class Exercise1Tests extends BaseTest {
         //        7. Assert that there are 4 texts on the Index Page under icons and they have proper text
         //        Text 1
         assertEquals(new PageObject(driver).textUnderImage1Microscope(),
-            "To include good practices\nand ideas from successful\n"
-                + "EPAM project");
+            "To include good practices\nand ideas from successful\nEPAM project");
         //        Text 2
         assertEquals(new PageObject(driver).textUnderImage2Headphones(), "To be flexible and\ncustomizable");
         //        Text 3
