@@ -14,8 +14,12 @@
     <selenium-java.version>3.141.59</selenium-java.version>
     <selenium-chrome-driver.version>3.141.59</selenium-chrome-driver.version>
     <webdrivermanager.version>4.4.3</webdrivermanager.version>
+    <allure.version>2.13.2</allure.version>
+    <allure.plugin.version>2.10.0</allure.plugin.version>
     <checkstyle.version>8.42</checkstyle.version>
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+    <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+    <aspectj.version>1.9.5</aspectj.version>
   </properties>
 
   <dependencies>
@@ -52,6 +56,12 @@
       <version>${webdrivermanager.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>${allure.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -92,12 +102,22 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M5</version>
+        <version>${maven-surefire-plugin.version}</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/HW3AllTests.xml</suiteXmlFile>
+            <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/HW4AllTests.xml</suiteXmlFile>
           </suiteXmlFiles>
+          <argLine>
+            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+          </argLine>
         </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
   </build>
@@ -185,7 +205,31 @@
             <version>3.0.0-M5</version>
             <configuration>
               <suiteXmlFiles>
+<<<<<<< HEAD
                 <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/HW3AllTests.xml</suiteXmlFile>
+||||||| merged common ancestors
+                <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/HW3AllTests.xml.xml</suiteXmlFile>
+=======
+                <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/HW3AllTests.xml</suiteXmlFile>
+              </suiteXmlFiles>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>HW4AllTests</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M5</version>
+            <configuration>
+              <suiteXmlFiles>
+                <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/HW4AllTests.xml</suiteXmlFile>
+>>>>>>> hw4, first attempt
               </suiteXmlFiles>
             </configuration>
           </plugin>
@@ -194,4 +238,17 @@
     </profile>
   </profiles>
 
+  <reporting>
+    <excludeDefaults>true</excludeDefaults>
+    <plugins>
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>${allure.plugin.version}</version>
+        <configuration>
+          <reportVersion>${allure.version}</reportVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>
