@@ -43,7 +43,7 @@ public class PageObject {
     private WebElement getTextUnderImage2Headphones;
     @FindBy(xpath = "//span[contains(text(), 'To be multiplatform')]")
     private WebElement getTextUnderImage3Monitor;
-    @FindBy(xpath = "//span[contains(text(), 'Already have good base')]")
+    @FindBy(xpath = "//span[contains(text(), 'Already have good base')")
     private WebElement getTextUnderImage4Rocket;
     @FindBy(id = "frame")
     private WebElement iframe;
@@ -77,8 +77,11 @@ public class PageObject {
     private WebElement log2Metal;
     @FindBy(xpath = "//li[contains(text(), 'Wind')]")
     private WebElement log3Wind;
-    @FindBy(xpath = "//li[contains(text(), 'Water')]")
+    @FindBy(xpath = "Water: condition changed to true")
     private WebElement log4Water;
+
+    public PageObject() {
+    }
 
     //    ex1 and ex 2
 

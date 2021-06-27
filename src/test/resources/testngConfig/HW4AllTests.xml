@@ -2,12 +2,9 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="HW4AllTests" >
-    <listeners>
-        <listener class-name="ru.training.at.hw4.listeners.AllureListener" />
-    </listeners>
     <test name="exercisesTests" >
         <packages>
-            <package name="ru.training.at.hw4.*" />
+            <package name="ru.training.at.hw4" />
         </packages>
     </test>
 </suite>

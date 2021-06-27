@@ -1,5 +1,7 @@
 package ru.training.at.hw4.ex1;
 
+import static org.testng.Assert.assertEquals;
+
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import ru.training.at.hw4.BaseTest;

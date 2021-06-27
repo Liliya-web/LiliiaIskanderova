@@ -1,7 +1,6 @@
 package ru.training.at.hw4.steps;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
@@ -117,25 +116,5 @@ public class AssertionStep extends AbstractStep {
     @Step("Assert left Element Packs menu item")
     public void assertElementPacksMenuLeft(String expectedText) {
         assertEquals(pageObject.checkElementPacksMenuLeft(), expectedText);
-    }
-
-    @Step("Assert text in log1 (Yellow color)")
-    public void assertTextLog1YellowColor(String expectedText) {
-        assertTrue(pageObject.log1Color().contains(expectedText));
-    }
-
-    @Step("Assert text in log2 (Selen metal)")
-    public void assertTextLog2MetalSelen(String expectedText) {
-        assertTrue(pageObject.log2Metal().contains(expectedText));
-    }
-
-    @Step("Assert text in log3 (Wind)")
-    public void assertTextLog3Wind(String expectedText) {
-        assertTrue(pageObject.log3Wind().contains(expectedText));
-    }
-
-    @Step("Assert text in log4 (Water)")
-    public void assertTextLog4Water(String expectedText) {
-        assertTrue(pageObject.log4Water().contains(expectedText));
     }
 }
