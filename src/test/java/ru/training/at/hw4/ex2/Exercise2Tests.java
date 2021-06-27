@@ -1,10 +1,5 @@
 package ru.training.at.hw4.ex2;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import ru.training.at.hw4.BaseTest;
 
@@ -42,12 +37,12 @@ public class Exercise2Tests extends BaseTest {
         //    • for radio button there is a log row and value is corresponded to the status of radio button
         //    • for dropdown there is a log row and value is corresponded to the selected value
         //        Yellow
-        assertTrue(pageObject.log1Color().contains("Colors: value changed to Yellow"));
+        assertionStep.assertTextLog1YellowColor("Colors: value changed to Yellow");
         //        Selen - little bag. "Metal" does not start with the capital letter
-        assertTrue(pageObject.log2Metal().contains("metal: value changed to Selen"));
+        assertionStep.assertTextLog2MetalSelen("metal: value changed to Selen");
         //        Wind
-        assertTrue(pageObject.log3Wind().contains("Wind: condition changed to true"));
+        assertionStep.assertTextLog3Wind("Wind: condition changed to true");
         //        Water
-        assertTrue(pageObject.log4Water().contains("Water: condition changed to true"));
+        assertionStep.assertTextLog4Water("Water: condition changed to true");
     }
 }
