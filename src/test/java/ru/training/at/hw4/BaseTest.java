@@ -28,7 +28,6 @@ public class BaseTest {
     public void setUp(ITestContext testContext) {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         actionStep = new ActionStep(driver);
         assertionStep = new AssertionStep(driver);
         pageObject = new PageObject(driver);
