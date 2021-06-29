@@ -4,7 +4,7 @@
 <suite name="HW4AllTests" >
     <test name="exercisesTests" >
         <packages>
-            <package name="ru.training.at.hw4" />
+            <package name="ru.training.at.hw4.*" />
         </packages>
     </test>
 </suite>
