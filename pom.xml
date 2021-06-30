@@ -109,12 +109,12 @@
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>
-<!--          <properties>-->
-<!--            <property>-->
-<!--              <name>listener</name>-->
-<!--              <value>ru.training.at.hw4.listeners.AllureListener</value>-->
-<!--            </property>-->
-<!--          </properties>-->
+          <properties>
+            <property>
+              <name>listener</name>
+              <value>ru.training.at.hw4.listeners.AllureListener</value>
+            </property>
+          </properties>
         </configuration>
         <dependencies>
           <dependency>
