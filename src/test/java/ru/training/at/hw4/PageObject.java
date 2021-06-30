@@ -80,9 +80,6 @@ public class PageObject {
     @FindBy(xpath = "//li[contains(text(), 'Water')]")
     private WebElement log4Water;
 
-    public PageObject() {
-    }
-
     //    ex1 and ex 2
 
     public void login(String name, String password) {

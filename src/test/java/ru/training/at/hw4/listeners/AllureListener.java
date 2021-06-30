@@ -1,6 +1,7 @@
 package ru.training.at.hw4.listeners;
 
 import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,7 @@ public class AllureListener implements ITestListener {
     }
 
     @Attachment(type = "image/png", fileExtension = ".png")
+    @Step
     private byte[] attachScreenShot(WebDriver driver) {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
