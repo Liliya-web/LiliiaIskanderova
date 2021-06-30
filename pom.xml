@@ -87,15 +87,15 @@
           <failsOnError>true</failsOnError>
           <linkXRef>false</linkXRef>
         </configuration>
-<!--        <executions>-->
-<!--          <execution>-->
-<!--            <id>validate</id>-->
-<!--            <phase>validate</phase>-->
-<!--            <goals>-->
-<!--              <goal>check</goal>-->
-<!--            </goals>-->
-<!--          </execution>-->
-<!--        </executions>-->
+        <executions>
+          <execution>
+            <id>validate</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin>
@@ -109,6 +109,12 @@
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>
+<!--          <properties>-->
+<!--            <property>-->
+<!--              <name>listener</name>-->
+<!--              <value>ru.training.at.hw4.listeners.AllureListener</value>-->
+<!--            </property>-->
+<!--          </properties>-->
         </configuration>
         <dependencies>
           <dependency>
