@@ -13,12 +13,12 @@
     <calculator.version>1</calculator.version>
     <selenium-java.version>3.141.59</selenium-java.version>
     <webdrivermanager.version>4.4.3</webdrivermanager.version>
-    <allure.version>2.13.2</allure.version>
+    <allure.version>2.14.0</allure.version>
     <allure.plugin.version>2.10.0</allure.plugin.version>
     <checkstyle.version>8.42</checkstyle.version>
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-    <aspectj.version>1.9.5</aspectj.version>
+    <aspectj.version>1.9.6</aspectj.version>
   </properties>
 
   <dependencies>
@@ -109,12 +109,12 @@
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>
-          <properties>
-            <property>
-              <name>listener</name>
-              <value>ru.training.at.hw4.listeners.AllureListener</value>
-            </property>
-          </properties>
+<!--          <properties>-->
+<!--            <property>-->
+<!--              <name>listener</name>-->
+<!--              <value>ru.training.at.hw4.listeners.AllureListener</value>-->
+<!--            </property>-->
+<!--          </properties>-->
         </configuration>
         <dependencies>
           <dependency>
