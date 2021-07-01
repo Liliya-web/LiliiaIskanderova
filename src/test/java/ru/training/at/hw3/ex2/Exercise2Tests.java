@@ -1,6 +1,7 @@
 package ru.training.at.hw3.ex2;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Test;
 import ru.training.at.hw3.BaseTest;
