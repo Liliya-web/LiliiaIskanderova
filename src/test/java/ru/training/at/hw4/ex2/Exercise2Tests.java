@@ -17,7 +17,7 @@ public class Exercise2Tests extends BaseTest {
         actionStep.login(USERNAME, PASSWORD);
 
         //        4. Assert Username
-        assertionStep.assertUsername("ROMAN IOVLEv"); // change to correct expected
+        assertionStep.assertUsername("ROMAN IOVLEV");
 
         //        5. Open through the header menu Service -> Different Elements Page
         actionStep.clickOnServicesDifferentElementsMenuHead();

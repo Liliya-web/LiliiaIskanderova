@@ -124,12 +124,6 @@
           </dependency>
         </dependencies>
       </plugin>
-
-      <plugin>
-        <groupId>io.qameta.allure</groupId>
-        <artifactId>allure-maven</artifactId>
-        <version>${allure.plugin.version}</version>
-      </plugin>
     </plugins>
   </build>
 
