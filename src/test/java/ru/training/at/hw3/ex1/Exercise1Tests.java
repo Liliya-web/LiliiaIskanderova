@@ -1,7 +1,10 @@
 package ru.training.at.hw3.ex1;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
 
+import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import ru.training.at.hw3.BaseTest;
@@ -24,59 +27,48 @@ public class Exercise1Tests extends BaseTest {
         //        4. Assert Username
         assertEquals(new PageObject(driver).checkUsername(), "ROMAN IOVLEV");
 
-        //        5. Assert that four menu items with proper headers are displayed
-        //        Home
-        assertEquals(new PageObject(driver).checkHomeMenuHead(), "HOME");
-        //        Contact form
-        assertEquals(new PageObject(driver).checkContactFormMenuHead(), "CONTACT FORM");
-        //        Service
-        assertEquals(new PageObject(driver).checkServiceMenuHead(), "SERVICE");
-        //        Metals & Colors
-        assertEquals(new PageObject(driver).checkMetalsAndColorsMenuHead(), "METALS & COLORS");
+        //        5. Assert that four head menu items with proper headers are displayed
+        assertNotNull(new PageObject(driver).menuHeadTexts());
+        List<String> menuHeadTexts = new PageObject(driver).menuHeadTexts();
+        assertEquals(menuHeadTexts.size(), 4);
+        assertEquals(menuHeadTexts.get(0), "HOME");
+        assertEquals(menuHeadTexts.get(1), "CONTACT FORM");
+        assertEquals(menuHeadTexts.get(2), "SERVICE");
+        assertEquals(menuHeadTexts.get(3), "METALS & COLORS");
 
         //        6. Assert that there are 4 images on the Index Page and they are displayed
-        //        Image 1
-        new PageObject(driver).image1Microscope();
-        //        Image 2
-        new PageObject(driver).image2Headphones();
-        //        Image 3
-        new PageObject(driver).image3Monitor();
-        //        Image 4
-        new PageObject(driver).image4Rocket();
+        assertEquals(new PageObject(driver).countBenefitIcons(), 4);
 
         //        7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        //        Text 1
-        assertEquals(new PageObject(driver).textUnderImage1Microscope(),
-            "To include good practices\nand ideas from successful\nEPAM project");
-        //        Text 2
-        assertEquals(new PageObject(driver).textUnderImage2Headphones(), "To be flexible and\ncustomizable");
-        //        Text 3
-        assertEquals(new PageObject(driver).textUnderImage3Monitor(), "To be multiplatform");
-        //        Text 4
-        assertEquals(new PageObject(driver).textUnderImage4Rocket(), "Already have good base\n(about 20 "
-            + "internal and\nsome external projects),\nwish to get more…");
+        assertNotNull(new PageObject(driver).textUnderBenefitIcons());
+        List<String> textUnderBenefitIcons = new PageObject(driver).textUnderBenefitIcons();
+        assertEquals(textUnderBenefitIcons.size(), 4);
+        assertEquals(textUnderBenefitIcons.get(0), "To include good practices\nand ideas from successful\n"
+                + "EPAM project");
+        assertEquals(textUnderBenefitIcons.get(1), "To be flexible and\ncustomizable");
+        assertEquals(textUnderBenefitIcons.get(2), "To be multiplatform");
+        assertEquals(textUnderBenefitIcons.get(3), "Already have good base\n(about 20 internal and\n"
+                + "some external projects),\nwish to get more…");
 
         //        8. Assert that there is the iframe with “Frame Button” exist
         WebElement iframe = new PageObject(driver).getIframe();
 
         //        9. Switch to the iframe and check that there is “Frame Button” in the iframe
         driver.switchTo().frame(iframe);
-        new PageObject(driver).getFrameButton();
+        assertTrue(new PageObject(driver).existsFrameButton());
 
         //        10. Switch to original window back
         driver.switchTo().defaultContent();
 
         //        11. Assert that there are 5 items in the Left Section are displayed and they have proper text
         //        (duplicate for step 5 except “Elements packs” section
-        //        Home
-        assertEquals(new PageObject(driver).checkHomeMenuLeft(), "Home");
-        //        Contact form
-        assertEquals(new PageObject(driver).checkContactFormMenuLeft(), "Contact form");
-        //        Service
-        assertEquals(new PageObject(driver).checkServiceMenuLeft(), "Service");
-        //        Metals & Colors
-        assertEquals(new PageObject(driver).checkMetalsAndColorsMenuLeft(), "Metals & Colors");
-        //        Elements packs
-        assertEquals(new PageObject(driver).checkElementPacksMenuLeft(), "Elements packs");
+        assertNotNull(new PageObject(driver).leftMenuItems());
+        List<String> leftMenuItems = new PageObject(driver).leftMenuItems();
+        assertEquals(leftMenuItems.size(), 5);
+        assertEquals(leftMenuItems.get(0), "Home");
+        assertEquals(leftMenuItems.get(1), "Contact form");
+        assertEquals(leftMenuItems.get(2), "Service");
+        assertEquals(leftMenuItems.get(3), "Metals & Colors");
+        assertEquals(leftMenuItems.get(4), "Elements packs");
     }
 }

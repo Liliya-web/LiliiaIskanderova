@@ -1,8 +1,10 @@
 package ru.training.at.hw3.ex2;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
+import java.util.List;
 import org.testng.annotations.Test;
 import ru.training.at.hw3.BaseTest;
 import ru.training.at.hw3.IndexPage;
@@ -41,13 +43,15 @@ public class Exercise2Tests extends BaseTest {
         //    • for each checkbox there is an individual log row and value is corresponded to the status of checkbox
         //    • for radio button there is a log row and value is corresponded to the status of radio button
         //    • for dropdown there is a log row and value is corresponded to the selected value
+        assertNotNull(new PageObject(driver).logTexts());
+        List<String> logTexts = new PageObject(driver).logTexts();
         //        Yellow
-        assertTrue(new PageObject(driver).log1Color().contains("Colors: value changed to Yellow"));
+        assertTrue(logTexts.get(0).contains("Colors: value changed to Yellow"));
         //        Selen - little bag. "Metal" does not start with the capital letter
-        assertTrue(new PageObject(driver).log2Metal().contains("metal: value changed to Selen"));
+        assertTrue(logTexts.get(1).contains("metal: value changed to Selen"));
         //        Wind
-        assertTrue(new PageObject(driver).log3Wind().contains("Wind: condition changed to true"));
+        assertTrue(logTexts.get(2).contains("Wind: condition changed to true"));
         //        Water
-        assertTrue(new PageObject(driver).log4Water().contains("Water: condition changed to true"));
+        assertTrue(logTexts.get(3).contains("Water: condition changed to true"));
     }
 }
