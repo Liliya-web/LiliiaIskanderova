@@ -1,7 +1,6 @@
 package ru.training.at.hw3.ex2;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
 import java.util.List;
@@ -43,7 +42,6 @@ public class Exercise2Tests extends BaseTest {
         //    • for each checkbox there is an individual log row and value is corresponded to the status of checkbox
         //    • for radio button there is a log row and value is corresponded to the status of radio button
         //    • for dropdown there is a log row and value is corresponded to the selected value
-        assertNotNull(new PageObject(driver).logTexts());
         List<String> logTexts = new PageObject(driver).logTexts();
         //        Yellow
         assertTrue(logTexts.get(0).contains("Colors: value changed to Yellow"));

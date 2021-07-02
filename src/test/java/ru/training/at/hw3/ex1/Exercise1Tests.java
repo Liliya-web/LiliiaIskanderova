@@ -1,7 +1,6 @@
 package ru.training.at.hw3.ex1;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
 import java.util.List;
@@ -28,7 +27,6 @@ public class Exercise1Tests extends BaseTest {
         assertEquals(new PageObject(driver).checkUsername(), "ROMAN IOVLEV");
 
         //        5. Assert that four head menu items with proper headers are displayed
-        assertNotNull(new PageObject(driver).menuHeadTexts());
         List<String> menuHeadTexts = new PageObject(driver).menuHeadTexts();
         assertEquals(menuHeadTexts.size(), 4);
         assertEquals(menuHeadTexts.get(0), "HOME");
@@ -40,7 +38,6 @@ public class Exercise1Tests extends BaseTest {
         assertEquals(new PageObject(driver).countBenefitIcons(), 4);
 
         //        7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        assertNotNull(new PageObject(driver).textUnderBenefitIcons());
         List<String> textUnderBenefitIcons = new PageObject(driver).textUnderBenefitIcons();
         assertEquals(textUnderBenefitIcons.size(), 4);
         assertEquals(textUnderBenefitIcons.get(0), "To include good practices\nand ideas from successful\n"
@@ -62,7 +59,6 @@ public class Exercise1Tests extends BaseTest {
 
         //        11. Assert that there are 5 items in the Left Section are displayed and they have proper text
         //        (duplicate for step 5 except “Elements packs” section
-        assertNotNull(new PageObject(driver).leftMenuItems());
         List<String> leftMenuItems = new PageObject(driver).leftMenuItems();
         assertEquals(leftMenuItems.size(), 5);
         assertEquals(leftMenuItems.get(0), "Home");
