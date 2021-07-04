@@ -66,8 +66,7 @@ public class Exercise1Tests extends BaseTest {
         //        10. Switch to original window back
         driver.switchTo().defaultContent();
 
-        //        11. Assert that there are 5 items in the Left Section are displayed and they have proper text
-        //        (duplicate for step 5 except “Elements packs” section
+        //        11. Assert that there are 5 items in the Left Section are displayed, and they have proper text
         //        Home
         assertEquals(new PageObject(driver).checkHomeMenuLeft(), "Home");
         //        Contact form

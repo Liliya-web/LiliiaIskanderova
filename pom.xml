@@ -19,6 +19,7 @@
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     <aspectj.version>1.9.6</aspectj.version>
+    <cucumber-testng.version>6.10.4</cucumber-testng.version>
   </properties>
 
   <dependencies>
@@ -60,6 +61,18 @@
       <artifactId>allure-testng</artifactId>
       <version>${allure.version}</version>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber-testng.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>${cucumber-testng.version}</version>
     </dependency>
   </dependencies>
 
@@ -104,17 +117,11 @@
         <version>${maven-surefire-plugin.version}</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/HW4AllTests.xml</suiteXmlFile>
+            <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/HW5AllTests.xml</suiteXmlFile>
           </suiteXmlFiles>
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>
-<!--          <properties>-->
-<!--            <property>-->
-<!--              <name>listener</name>-->
-<!--              <value>ru.training.at.hw4.listeners.AllureListener</value>-->
-<!--            </property>-->
-<!--          </properties>-->
         </configuration>
         <dependencies>
           <dependency>
@@ -229,6 +236,24 @@
             <configuration>
               <suiteXmlFiles>
                 <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/HW4AllTests.xml</suiteXmlFile>
+              </suiteXmlFiles>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>HW5AllTests</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M5</version>
+            <configuration>
+              <suiteXmlFiles>
+                <suiteXmlFile>${project.basedir}/src/test/resources/testngConfig/HW5AllTests.xml</suiteXmlFile>
               </suiteXmlFiles>
             </configuration>
           </plugin>
