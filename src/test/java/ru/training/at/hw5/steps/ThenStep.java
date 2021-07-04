@@ -4,12 +4,9 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Then;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.openqa.selenium.WebElement;
 
 public class ThenStep extends AbstractStep {
