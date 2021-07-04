@@ -20,7 +20,6 @@ public class Exercise1Tests {
     private static final String USERNAME = "Roman";
     private static final String PASSWORD = "Jdi1234";
 
-
     @BeforeTest
     public void setUp() {
         WebDriverManager.chromedriver().setup();
