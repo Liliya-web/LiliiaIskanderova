@@ -1,5 +1,7 @@
 package ru.training.at.hw3;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,67 +23,30 @@ public class PageObject {
     private WebElement getLoginButton;
     @FindBy(id = "user-name")
     private WebElement getUsernameDisplayed;
-    @FindBy(xpath = "//a[text()='Home']")
-    private WebElement getHomeMenuHead;
-    @FindBy(xpath = "//a[text()='Contact form']")
-    private WebElement getContactFormMenuHead;
-    @FindBy(css = "a[data-toggle=\"dropdown\"]")
-    private WebElement getServicesMenuHead;
-    @FindBy(xpath = "//a[text()='Metals & Colors']")
-    private WebElement getMetalsAndColorsMenuHead;
-    @FindBy(xpath = "//span[@class=\"icons-benefit icon-practise\"]")
-    private WebElement getImage1Microscope;
-    @FindBy(xpath = "//span[@class=\"icons-benefit icon-custom\"]")
-    private WebElement getImage2Headphones;
-    @FindBy(xpath = "//span[@class=\"icons-benefit icon-multi\"]")
-    private WebElement getImage3Monitor;
-    @FindBy(xpath = "//span[@class=\"icons-benefit icon-base\"]")
-    private WebElement getImage4Rocket;
-    @FindBy(xpath = "//span[contains(text(), 'To include good practices')]")
-    private WebElement getTextUnderImage1Microscope;
-    @FindBy(xpath = "//span[contains(text(), 'To be flexible')]")
-    private WebElement getTextUnderImage2Headphones;
-    @FindBy(xpath = "//span[contains(text(), 'To be multiplatform')]")
-    private WebElement getTextUnderImage3Monitor;
-    @FindBy(xpath = "//span[contains(text(), 'Already have good base')]")
-    private WebElement getTextUnderImage4Rocket;
+    @FindBy(xpath = "//ul[contains(@class, 'm-l8')]/li/a")
+    private List<WebElement> getMenuHeadItems;
+    @FindBy(css = "div.benefit-icon")
+    private List<WebElement> getBenefitIcons;
+    @FindBy(css = "span.benefit-txt")
+    private List<WebElement> getTextUnderBenefitIcons;
     @FindBy(id = "frame")
     private WebElement iframe;
     @FindBy(id = "frame-button")
-    private WebElement getFrameButton;
-    @FindBy(xpath = "//span[text()='Home']")
-    private WebElement getHomeMenuLeft;
-    @FindBy(xpath = "//span[text()='Contact form']")
-    private WebElement getContactFormMenuLeft;
-    @FindBy(xpath = "//span[text()='Service']")
-    private WebElement getServiceMenuLeft;
-    @FindBy(xpath = "//span[text()='Metals & Colors']")
-    private WebElement getMetalsAndColorsMenuLeft;
-    @FindBy(xpath = "//span[text()='Elements packs']")
-    private WebElement getElementsPacksMenuLeft;
+    private List<WebElement> getFrameButtons;
+    @FindBy(xpath = "//ul[contains(@class, 'left')]/li/a/span")
+    private List<WebElement> getLeftMenuItems;
     @FindBy(xpath = "//a[text()='Different elements']")
     private WebElement getServiceDifferentElementsMenuHead;
-    @FindBy(css = "label:nth-child(1) > input[type=checkbox]")
-    private WebElement getWaterCheckbox;
-    @FindBy(css = "label:nth-child(3) > input[type=checkbox]")
-    private WebElement getWindCheckbox;
-    @FindBy(css = "label:nth-child(4) > input[type=radio]")
-    private WebElement getSelenRadio;
+    @FindBy(css = "input[type=checkbox]")
+    private List<WebElement> getCheckboxes;
+    @FindBy(css = "input[type=radio]")
+    private List<WebElement> getRadios;
     @FindBy(css = "select[class=\"uui-form-element\"]")
     private WebElement dropdown;
     @FindBy(xpath = "//option[text()='Yellow']")
     private WebElement getYellowColor;
-    @FindBy(xpath = "//li[contains(text(), 'Yellow')]")
-    private WebElement log1Colors;
-    @FindBy(xpath = "//li[contains(text(), 'Selen')]")
-    private WebElement log2Metal;
-    @FindBy(xpath = "//li[contains(text(), 'Wind')]")
-    private WebElement log3Wind;
-    @FindBy(xpath = "//li[contains(text(), 'Water')]")
-    private WebElement log4Water;
-
-    public PageObject() {
-    }
+    @FindBy(css = "ul[class=\"panel-body-list logs\"] > li")
+    private List<WebElement> getLogTexts;
 
     //    ex1 and ex 2
 
@@ -99,99 +64,74 @@ public class PageObject {
     }
 
     //    ex1
-    public String checkHomeMenuHead() {
-        return getHomeMenuHead.getText();
+    public List<String> menuHeadTexts() {
+        List<String> result = new ArrayList<>();
+        if (getMenuHeadItems.size() > 0) {
+            for (WebElement elem :
+                    getMenuHeadItems) {
+                result.add(elem.getText());
+            }
+        }
+        return result;
     }
 
-    public String checkContactFormMenuHead() {
-        return getContactFormMenuHead.getText();
+    public int countBenefitIcons() {
+        return getBenefitIcons.size();
     }
 
-    public String checkServiceMenuHead() {
-        return getServicesMenuHead.getText();
-    }
-
-    public String checkMetalsAndColorsMenuHead() {
-        return getMetalsAndColorsMenuHead.getText();
-    }
-
-    public WebElement image1Microscope() {
-        return getImage1Microscope;
-    }
-
-    public WebElement image2Headphones() {
-        return getImage2Headphones;
-    }
-
-    public WebElement image3Monitor() {
-        return getImage3Monitor;
-    }
-
-    public WebElement image4Rocket() {
-        return getImage4Rocket;
-    }
-
-    public String textUnderImage1Microscope() {
-        return getTextUnderImage1Microscope.getText();
-    }
-
-    public String textUnderImage2Headphones() {
-        return getTextUnderImage2Headphones.getText();
-    }
-
-    public String textUnderImage3Monitor() {
-        return getTextUnderImage3Monitor.getText();
-    }
-
-    public String textUnderImage4Rocket() {
-        return getTextUnderImage4Rocket.getText();
+    public List<String> textUnderBenefitIcons() {
+        List<String> result = new ArrayList<>();
+        if (getTextUnderBenefitIcons.size() > 0) {
+            for (WebElement elem :
+                    getTextUnderBenefitIcons) {
+                result.add(elem.getText());
+            }
+        }
+        return result;
     }
 
     public WebElement getIframe() {
         return iframe;
     }
 
-    public WebElement getFrameButton() {
-        return getFrameButton;
+    public boolean existsFrameButton() {
+        return getFrameButtons.size() > 0;
     }
 
-    public String checkHomeMenuLeft() {
-        return getHomeMenuLeft.getText();
-    }
-
-    public String checkContactFormMenuLeft() {
-        return getContactFormMenuLeft.getText();
-    }
-
-    public String checkServiceMenuLeft() {
-        return getServiceMenuLeft.getText();
-    }
-
-    public String checkMetalsAndColorsMenuLeft() {
-        return getMetalsAndColorsMenuLeft.getText();
-    }
-
-    public String checkElementPacksMenuLeft() {
-        return getElementsPacksMenuLeft.getText();
+    public List<String> leftMenuItems() {
+        List<String> result = new ArrayList<>();
+        if (getLeftMenuItems.size() > 0) {
+            for (WebElement elem :
+                    getLeftMenuItems) {
+                result.add(elem.getText());
+            }
+        }
+        return result;
     }
 
     // ex2
 
     public void clickOnServicesDifferentElementsMenuHead() {
-        getServicesMenuHead.click();
+        getMenuHeadItems.get(2).click(); // click Service dropdown on the head menu
         getServiceDifferentElementsMenuHead.click();
     }
 
     public void selectWaterCheckBox() {
-        getWaterCheckbox.click();
+        if (getCheckboxes.size() > 0) {
+            getCheckboxes.get(0).click();
+        }
     }
 
     public void selectWindCheckbox() {
-        getWindCheckbox.click();
+        if (getCheckboxes.size() >= 3) {
+            getCheckboxes.get(2).click();
+        }
     }
 
     public void selectSelenRadio() {
-        getSelenRadio.click();
+        if (getRadios.size() >= 4) {
+            getRadios.get(3).click();
+        }
     }
 
     public void selectYellowInDropdown() {
@@ -199,20 +139,15 @@ public class PageObject {
         getYellowColor.click();
     }
 
-    public String log1Color() {
-        return log1Colors.getText();
-    }
-
-    public String log2Metal() {
-        return log2Metal.getText();
-    }
-
-    public String log3Wind() {
-        return log3Wind.getText();
-    }
-
-    public String log4Water() {
-        return log4Water.getText();
+    public List<String> logTexts() {
+        List<String> result = new ArrayList<>();
+        if (getLogTexts.size() > 0) {
+            for (WebElement elem :
+                    getLogTexts) {
+                result.add(elem.getText());
+            }
+        }
+        return result;
     }
 
 }
