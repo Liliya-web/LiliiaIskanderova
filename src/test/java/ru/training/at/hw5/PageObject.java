@@ -27,16 +27,6 @@ public class PageObject {
     private WebElement getUsernameDisplayed;
     @FindBy(xpath = "//ul[contains(@class, 'm-l8')]/li/a")
     private List<WebElement> getMenuHeadItems;
-    @FindBy(css = "div.benefit-icon")
-    private List<WebElement> getBenefitIcons;
-    @FindBy(css = "span.benefit-txt")
-    private List<WebElement> getTextUnderBenefitIcons;
-    @FindBy(id = "frame")
-    private WebElement iframe;
-    @FindBy(id = "frame-button")
-    private List<WebElement> getFrameButtons;
-    @FindBy(xpath = "//ul[contains(@class, 'left')]/li/a/span")
-    private List<WebElement> getLeftMenuItems;
     @FindBy(xpath = "//a[text()='Different elements']")
     private WebElement getServiceDifferentElementsMenuHead;
     @FindBy(css = "input[type=checkbox]")
@@ -67,8 +57,6 @@ public class PageObject {
     public List<WebElement> getUserTableHeaders;
     @FindBy(xpath = "//ul[contains(@class, 'log')]/li")
     public List<WebElement> getLogMessages;
-    @FindBy(xpath = "//span[text()='Logout']")
-    public WebElement getLogOutButton;
 
     public void login(String name, String password) {
         openLoginField.click();
@@ -81,51 +69,6 @@ public class PageObject {
 
     public String checkUsername() {
         return getUsernameDisplayed.getText();
-    }
-
-    public List<String> menuHeadTexts() {
-        List<String> result = new ArrayList<>();
-        if (getMenuHeadItems.size() > 0) {
-            for (WebElement elem :
-                    getMenuHeadItems) {
-                result.add(elem.getText());
-            }
-        }
-        return result;
-    }
-
-    public int countBenefitIcons() {
-        return getBenefitIcons.size();
-    }
-
-    public List<String> textUnderBenefitIcons() {
-        List<String> result = new ArrayList<>();
-        if (getTextUnderBenefitIcons.size() > 0) {
-            for (WebElement elem :
-                    getTextUnderBenefitIcons) {
-                result.add(elem.getText());
-            }
-        }
-        return result;
-    }
-
-    public WebElement getIframe() {
-        return iframe;
-    }
-
-    public boolean existsFrameButton() {
-        return getFrameButtons.size() > 0;
-    }
-
-    public List<String> leftMenuItems() {
-        List<String> result = new ArrayList<>();
-        if (getLeftMenuItems.size() > 0) {
-            for (WebElement elem :
-                    getLeftMenuItems) {
-                result.add(elem.getText());
-            }
-        }
-        return result;
     }
 
     public void clickOnServiceMenuHead() {

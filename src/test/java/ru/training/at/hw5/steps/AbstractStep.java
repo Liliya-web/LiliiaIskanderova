@@ -9,6 +9,7 @@ public class AbstractStep {
     protected PageObject pageObject;
     protected static final String USERNAME = "Roman";
     protected static final String PASSWORD = "Jdi1234";
+    protected static final String USERNAME_DISPLAYED = "ROMAN IOVLEV";
 
     protected AbstractStep() {
         indexPage = new IndexPage(WebDriverSingleton.getDriver());
