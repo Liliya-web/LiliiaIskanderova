@@ -23,7 +23,7 @@ public class PageObject {
     private WebElement getLoginButton;
     @FindBy(id = "user-name")
     private WebElement getUsernameDisplayed;
-    @FindBy(css = "ul.uui-navigation.nav.navbar-nav.m-l8 > li > a")
+    @FindBy(xpath = "//ul[contains(@class, 'm-l8')]/li/a")
     private List<WebElement> getMenuHeadItems;
     @FindBy(css = "div.benefit-icon")
     private List<WebElement> getBenefitIcons;
@@ -33,7 +33,7 @@ public class PageObject {
     private WebElement iframe;
     @FindBy(id = "frame-button")
     private List<WebElement> getFrameButtons;
-    @FindBy(css = "ul[class=\"sidebar-menu left\"] > li > a > span")
+    @FindBy(xpath = "//ul[contains(@class, 'left')]/li/a/span")
     private List<WebElement> getLeftMenuItems;
     @FindBy(xpath = "//a[text()='Different elements']")
     private WebElement getServiceDifferentElementsMenuHead;
