@@ -133,12 +133,6 @@ public class PageObject {
         return getUserTableCheckboxes.size();
     }
 
-    public <T> void  tableValuesChecker(List<WebElement> actualValues, List<String> expectedValues) {
-        for (int i = 0; i < actualValues.size(); i++) {
-            assertEquals(actualValues.get(i).getText(), expectedValues.get(i));
-        }
-    }
-
     public void clickOnUserTableVipCheckboxForSergeyIvan() {
         getUserTableCheckboxes.get(1).click();
     }

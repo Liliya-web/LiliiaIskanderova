@@ -59,13 +59,12 @@ public class ThenStep extends AbstractStep {
         assertEquals(pageObject.countUserTableCheckboxes(), 6);
     }
 
-    @ParameterType("'([0-9]+)'")
-    public List<Integer> indexes(String indexes) {
-        return Arrays.stream(indexes.split(","))
-                .map(index -> Integer.parseInt(index.trim()))
-                .collect(Collectors.toList());
+    public void  tableValuesChecker(List<WebElement> actualValues, List<String> expectedValues) {
+        for (int i = 0; i < actualValues.size(); i++) {
+            assertEquals(actualValues.get(i).getText(), expectedValues.get(i));
+        }
     }
-
+    
     @Then("User table should contain following values:")
     public void checkUserTableValues(DataTable dataTable) {
         List<WebElement> userTableHeadersActual = pageObject.getUserTableHeaders;
@@ -74,28 +73,28 @@ public class ThenStep extends AbstractStep {
             userTableHeadersExpected.add(dataTable.cell(0, i));
         }
         userTableHeadersExpected.add(1, "Type");
-        pageObject.tableValuesChecker(userTableHeadersActual, userTableHeadersExpected);
+        tableValuesChecker(userTableHeadersActual, userTableHeadersExpected);
 
         List<WebElement> userTableNumbersActual = pageObject.getUserTableNumbers;
         List<String> userTableNumbersExpected = new ArrayList<>();
         for (int i = 1; i <= 6; i++) {
             userTableNumbersExpected.add(dataTable.cell(i, 0));
         }
-        pageObject.tableValuesChecker(userTableNumbersActual, userTableNumbersExpected);
+        tableValuesChecker(userTableNumbersActual, userTableNumbersExpected);
 
         List<WebElement> userTableUsernamesActual = pageObject.getUserTableUsernames;
         List<String> userTableUsernamesExpected = new ArrayList<>();
         for (int i = 1; i <= 6; i++) {
             userTableUsernamesExpected.add(dataTable.cell(i, 1));
         }
-        pageObject.tableValuesChecker(userTableUsernamesActual, userTableUsernamesExpected);
+        tableValuesChecker(userTableUsernamesActual, userTableUsernamesExpected);
 
         List<WebElement> userTableDescriptionsActual = pageObject.getUserTableDescriptionsUnderImages;
         List<String> userTableDescriptionsExpected = new ArrayList<>();
         for (int i = 1; i <= 6; i++) {
             userTableDescriptionsExpected.add(dataTable.cell(i, 2));
         }
-        pageObject.tableValuesChecker(userTableDescriptionsActual, userTableDescriptionsExpected);
+        tableValuesChecker(userTableDescriptionsActual, userTableDescriptionsExpected);
     }
 
     @Then("droplist should contain values in column Type for user Roman")
@@ -105,7 +104,7 @@ public class ThenStep extends AbstractStep {
         for (int i = 1; i <= 3; i++) {
             userTableDropdownValuesExpected.add(dataTable.cell(i, 0));
         }
-        pageObject.tableValuesChecker(userTableDropdownValuesActual, userTableDropdownValuesExpected);
+        tableValuesChecker(userTableDropdownValuesActual, userTableDropdownValuesExpected);
     }
 
     @Then("1 log row has {string} text in log section")
