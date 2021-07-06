@@ -1,4 +1,4 @@
-package ru.training.at.hw5;
+package ru.training.at.hw6;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
