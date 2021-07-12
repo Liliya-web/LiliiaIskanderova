@@ -23,8 +23,8 @@ public class MetalsAndColorsPage extends WebPage {
     public static Dropdown colorsDropdown;
     @JDropdown(root = "div[ui=combobox]", value = "input", list = "li", expand = ".caret")
     public static Dropdown metalsDropdown;
-    @Css(".salad > button") public static Button vegetablesButton;
-    @UI(".salad li") public static List<UIElement> vegetableValues;
+    @JDropdown(root = "div[ui=droplist]", value = ".filter-option", list = "li", expand = ".caret")
+    public static Dropdown vegetablesDropdown;
     @ByText("Submit") public static Button submitButton;
     @Css(".summ-res") public static UIElement summaryResult;
     @Css(".col-res") public static UIElement colorResult;
