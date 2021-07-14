@@ -30,32 +30,32 @@ public class MainSteps {
     }
 
     @Step("Submit Metals and Colors form")
-    public void submitMetalsAndColorsForm(List<Double> summary, List<String> elements,
+    public void submitMetalsAndColorsForm(List<Integer> summary, List<String> elements,
                                           String color, String metal, List<String> vegetables) {
         if (summaryRadio != null) {
             IList<UIElement> summaryList = summaryRadio.list();
-            if (summary.contains(1.0)) {
+            if (summary.contains(1)) {
                 summaryList.get(0).click();
             }
-            if (summary.contains(2.0)) {
+            if (summary.contains(2)) {
                 summaryList.get(4).click();
             }
-            if (summary.contains(3.0)) {
+            if (summary.contains(3)) {
                 summaryList.get(1).click();
             }
-            if (summary.contains(4.0)) {
+            if (summary.contains(4)) {
                 summaryList.get(5).click();
             }
-            if (summary.contains(5.0)) {
+            if (summary.contains(5)) {
                 summaryList.get(2).click();
             }
-            if (summary.contains(6.0)) {
+            if (summary.contains(6)) {
                 summaryList.get(6).click();
             }
-            if (summary.contains(7.0)) {
+            if (summary.contains(7)) {
                 summaryList.get(3).click();
             }
-            if (summary.contains(8.0)) {
+            if (summary.contains(8)) {
                 summaryList.get(7).click();
             }
         }
@@ -101,12 +101,12 @@ public class MainSteps {
     }
 
     @Step("Check log on Metals and Colors page")
-    public void checkMetalsAndColorsResults(List<Double> summary, List<String> elements,
+    public void checkMetalsAndColorsResults(List<Integer> summary, List<String> elements,
                                             String color, String metal, List<String> vegetables) {
         if (summary.size() > 0) {
             int summarySum = 0;
-            for (Double elem : summary) {
-                summarySum += elem.intValue();
+            for (Integer elem : summary) {
+                summarySum += elem;
             }
             assertThat(summaryResult.getText(), is("Summary: " + summarySum));
         }
