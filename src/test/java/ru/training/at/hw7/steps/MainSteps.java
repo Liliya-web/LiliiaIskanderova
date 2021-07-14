@@ -4,7 +4,17 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static ru.training.at.hw7.site.SiteJdi.metalsAndColorsMenuHead;
-import static ru.training.at.hw7.site.pages.MetalsAndColorsPage.*;
+import static ru.training.at.hw7.site.pages.MetalsAndColorsPage.colorResult;
+import static ru.training.at.hw7.site.pages.MetalsAndColorsPage.colorsDropdown;
+import static ru.training.at.hw7.site.pages.MetalsAndColorsPage.elementsCheckboxes;
+import static ru.training.at.hw7.site.pages.MetalsAndColorsPage.elementsResult;
+import static ru.training.at.hw7.site.pages.MetalsAndColorsPage.metalResult;
+import static ru.training.at.hw7.site.pages.MetalsAndColorsPage.metalsDropdown;
+import static ru.training.at.hw7.site.pages.MetalsAndColorsPage.submitButton;
+import static ru.training.at.hw7.site.pages.MetalsAndColorsPage.summaryRadio;
+import static ru.training.at.hw7.site.pages.MetalsAndColorsPage.summaryResult;
+import static ru.training.at.hw7.site.pages.MetalsAndColorsPage.vegetablesDropdown;
+import static ru.training.at.hw7.site.pages.MetalsAndColorsPage.vegetablesResult;
 
 import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.complex.IList;

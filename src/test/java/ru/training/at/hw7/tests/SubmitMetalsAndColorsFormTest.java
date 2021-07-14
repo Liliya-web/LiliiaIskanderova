@@ -15,8 +15,7 @@ import ru.training.at.hw7.BaseTest;
 public class SubmitMetalsAndColorsFormTest extends BaseTest {
     @DataProvider(name = "jsonData")
     public Object[][] getJsonData(ITestContext context) throws FileNotFoundException {
-        String dataFile = "/home/liliya/IdeaProjects/LiliiaIskanderova/src/test/resources/ru.training.at.hw7/"
-        + "JDI_ex8_metalsColorsDataSet.json";
+        String dataFile = "src/test/resources/ru.training.at.hw7/JDI_ex8_metalsColorsDataSet.json";
         JsonArray array = JsonParser.parseReader(new FileReader(dataFile)).getAsJsonArray();
         Gson gson = new Gson();
         List<Map> list = gson.fromJson(array, List.class);
