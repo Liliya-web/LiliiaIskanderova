@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "4647c737-9789-48f7-9ded-68a959497a6b",
+		"name": "IskanderovaLiliiaTrelloPostman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateDefaultBoard",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"username\", \"user69883938\");",
+							"pm.collectionVariables.set(\"boardName\", pm.variables.replaceIn('{{$randomProductName}}'));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseData = pm.response.json();",
+							"pm.collectionVariables.set(\"boardId\", responseData.id);",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 3000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+							"});",
+							"",
+							"pm.test(\"Board has proper name\", function () {",
+							"    var boardName = pm.collectionVariables.get(\"boardName\");",
+							"    pm.expect(responseData.name).to.eql(boardName);",
+							"});",
+							"",
+							"pm.test(\"Board is private\", function () {",
+							"    pm.expect(responseData.prefs.permissionLevel).to.eql(\"private\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apiToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/1/boards/?key={{apiKey}}&token={{apiToken}}&name={{boardName}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{apiKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{apiToken}}"
+						},
+						{
+							"key": "name",
+							"value": "{{boardName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ModifyBoard",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"newBoardName\", pm.variables.replaceIn('{{$randomProductName}}'));",
+							"pm.collectionVariables.set(\"description\", pm.variables.replaceIn('{{$randomLoremSentences}}'));",
+							"pm.collectionVariables.set(\"prefs/permissionLevel\", 'public');",
+							"pm.collectionVariables.set(\"labelName/purple\", pm.variables.replaceIn('{{$randomProduct}}'));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseData = pm.response.json();",
+							"pm.collectionVariables.set(\"boardId\", responseData.id);",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 4000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);",
+							"});",
+							"",
+							"pm.test(\"Board has proper name\", function () {",
+							"    var newBoardName = pm.collectionVariables.get(\"newBoardName\");",
+							"    pm.expect(responseData.name).to.eql(newBoardName);",
+							"});",
+							"",
+							"pm.test(\"Board has proper desctiption\", function () {",
+							"    var description = pm.collectionVariables.get(\"description\");",
+							"    pm.expect(responseData.desc).to.eql(description);",
+							"});",
+							"",
+							"pm.test(\"Board has proper permission level\", function () {",
+							"    var permissionLevel = pm.collectionVariables.get(\"prefs/permissionLevel\");",
+							"    pm.expect(responseData.prefs.permissionLevel).to.eql(permissionLevel);",
+							"});",
+							"",
+							"pm.test(\"Board has proper purple label name\", function () {",
+							"    var labelNamePurple = pm.collectionVariables.get(\"labelName/purple\");",
+							"    pm.expect(responseData.labelNames.purple).to.eql(labelNamePurple);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/1/boards/{{boardId}}?key={{apiKey}}&token={{apiToken}}&name={{newBoardName}}&desc={{description}}&prefs/permissionLevel={{prefs/permissionLevel}}&labelNames/purple={{labelName/purple}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{boardId}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{apiKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{apiToken}}"
+						},
+						{
+							"key": "name",
+							"value": "{{newBoardName}}"
+						},
+						{
+							"key": "desc",
+							"value": "{{description}}"
+						},
+						{
+							"key": "prefs/permissionLevel",
+							"value": "{{prefs/permissionLevel}}"
+						},
+						{
+							"key": "labelNames/purple",
+							"value": "{{labelName/purple}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBoard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 4000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);",
+							"});",
+							"",
+							"pm.test(\"Board has proper name\", function () {",
+							"    var newBoardName = pm.collectionVariables.get(\"newBoardName\");",
+							"    pm.expect(responseData.name).to.eql(newBoardName);",
+							"});",
+							"",
+							"pm.test(\"Board has proper desctiption\", function () {",
+							"    var description = pm.collectionVariables.get(\"description\");",
+							"    pm.expect(responseData.desc).to.eql(description);",
+							"});",
+							"",
+							"pm.test(\"Board has proper permission level\", function () {",
+							"    var permissionLevel = pm.collectionVariables.get(\"prefs/permissionLevel\");",
+							"    pm.expect(responseData.prefs.permissionLevel).to.eql(permissionLevel);",
+							"});",
+							"",
+							"pm.test(\"Board has proper purple label name\", function () {",
+							"    var labelNamePurple = pm.collectionVariables.get(\"labelName/purple\");",
+							"    pm.expect(responseData.labelNames.purple).to.eql(labelNamePurple);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apiToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/1/boards/{{boardId}}?apiKey={{apiKey}}&apiToken={{apiToken}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{boardId}}"
+					],
+					"query": [
+						{
+							"key": "apiKey",
+							"value": "{{apiKey}}"
+						},
+						{
+							"key": "apiToken",
+							"value": "{{apiToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteBoard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 4000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);",
+							"});",
+							"",
+							"pm.test(\"Board is deleted\", function () {",
+							"    pm.response.to.have.body(\"{\\\"_value\\\":null}\\n\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/1/boards/{{boardId}}?key={{apiKey}}&token={{apiToken}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{boardId}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{apiKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{apiToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "username",
+			"value": ""
+		},
+		{
+			"key": "boardName",
+			"value": ""
+		},
+		{
+			"key": "boardId",
+			"value": ""
+		},
+		{
+			"key": "newBoardName",
+			"value": ""
+		},
+		{
+			"key": "description",
+			"value": ""
+		},
+		{
+			"key": "prefs/permissionLevel",
+			"value": ""
+		},
+		{
+			"key": "labelNames/purple",
+			"value": ""
+		},
+		{
+			"key": "labelName/purple",
+			"value": ""
+		}
+	]
+}
