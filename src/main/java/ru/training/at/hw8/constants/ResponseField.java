@@ -4,12 +4,12 @@ public enum ResponseField {
     ID("id"),
     NAME("name"),
     DESC("desc"),
-    PERMISSION("prefs.permissionLevel"),
-    LABEL_NAMES("labelNames.purple");
+    PERMISSION("permissionLevel"),
+    PURPLE("purple");
 
     public String name;
 
     ResponseField(String name) {
         this.name = name;
-    };
+    }
 }

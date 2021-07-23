@@ -1,6 +1,19 @@
 package ru.training.at.hw8.constants;
 
+import ru.training.at.hw8.propertyloader.PropertyLoader;
+
+import java.util.Properties;
+
+import static ru.training.at.hw8.propertyloader.PropertyLoader.*;
+
 public class SingleValueParameter {
-    public static final String KEY = "0dd6dcb8fc0cfc49254e7643b90e16b0";
-    public static final String TOKEN = "b1f1be422f4cc770c28fb1f089a9638fcf2b4fd39a66d14833925070c40706d4";
+    private static final Properties envProperties = getProperties();
+    public static final String KEY;
+    public static final String TOKEN;
+
+    static {
+        assert envProperties != null;
+        KEY = envProperties.getProperty("KEY");
+        TOKEN = envProperties.getProperty("TOKEN");
+    }
 }

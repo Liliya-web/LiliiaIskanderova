@@ -41,15 +41,10 @@ public class DataProviderForTrello {
     }
 
     @DataProvider
-    public static Object[][] createPublicBoardDataProvider() {
+    public static Object[][] createBoardsWithDifferentPermissionsDataProvider() {
         return new Object[][]{
-                {DEFAULT_BOARD_NAME, PUBLIC}
-        };
-    }
-
-    @DataProvider
-    public static Object[][] createOrgBoardDataProvider() {
-        return new Object[][]{
+                {DEFAULT_BOARD_NAME, PRIVATE},
+                {DEFAULT_BOARD_NAME, PUBLIC},
                 {DEFAULT_BOARD_NAME, ORG}
         };
     }
