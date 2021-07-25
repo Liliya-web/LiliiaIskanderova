@@ -42,10 +42,9 @@ public class TrelloBoardTests {
                         .setName(boardName)
                         .buildRequest()
                         .sendRequest());
+        context.getCurrentXmlTest().addParameter("id", getIdFromResult(response));
         assertJsonValue(response, NAME, boardName);
         assertJsonPermissionValue(response, PERMISSION, permissionPrivate);
-
-        context.getCurrentXmlTest().addParameter("id", getIdFromResult(response));
     }
 
     @Test(dataProvider = "orgBoardWithDescriptionDataProvider",
@@ -59,11 +58,10 @@ public class TrelloBoardTests {
                         .setPermissionLevelCreate(permissionOrg)
                         .buildRequest()
                         .sendRequest());
+        context.getCurrentXmlTest().addParameter("id", getIdFromResult(response));
         assertJsonValue(response, NAME, boardName);
         assertJsonValue(response, DESC, description);
         assertJsonPermissionValue(response, PERMISSION, permissionOrg);
-
-        context.getCurrentXmlTest().addParameter("id", getIdFromResult(response));
     }
 
     @Test(dataProvider = "publicBoardWithTwoNamesDescriptionLabelNameDataProvider",
@@ -76,10 +74,9 @@ public class TrelloBoardTests {
                         .setName(defaultBoardName)
                         .buildRequest()
                         .sendRequest());
-        assertJsonValue(responsePost, NAME, defaultBoardName);
-
         String id = getIdFromResult(responsePost);
         context.getCurrentXmlTest().addParameter("id", id);
+        assertJsonValue(responsePost, NAME, defaultBoardName);
 
         TrelloResponse responsePut = getAnswer(
                 requestBuilder()
@@ -109,12 +106,11 @@ public class TrelloBoardTests {
                         .setPermissionLevelCreate(permissionPublic)
                         .buildRequest()
                         .sendRequest());
+        String id = getIdFromResult(responsePost);
+        context.getCurrentXmlTest().addParameter("id", id);
         assertJsonValue(responsePost, NAME, defaultBoardName);
         assertJsonValue(responsePost, DESC, description);
         assertJsonPermissionValue(responsePost, PERMISSION, permissionPublic);
-
-        String id = getIdFromResult(responsePost);
-        context.getCurrentXmlTest().addParameter("id", id);
 
         TrelloResponse responsePut = getAnswer(
                 requestBuilder()
@@ -142,11 +138,10 @@ public class TrelloBoardTests {
                         .setPermissionLevelCreate(permissionLevel)
                         .buildRequest()
                         .sendRequest());
-        assertJsonValue(responsePost, NAME, boardName);
-        assertJsonPermissionValue(responsePost, PERMISSION, permissionLevel);
-
         String id = getIdFromResult(responsePost);
         context.getCurrentXmlTest().addParameter("id", id);
+        assertJsonValue(responsePost, NAME, boardName);
+        assertJsonPermissionValue(responsePost, PERMISSION, permissionLevel);
 
         TrelloResponse responseGet = getAnswer(
                 requestBuilder()
@@ -168,11 +163,10 @@ public class TrelloBoardTests {
                         .setPermissionLevelCreate(permissionLevel)
                         .buildRequest()
                         .sendRequest());
-        assertJsonValue(response, NAME, boardName);
-        assertJsonPermissionValue(response, PERMISSION, permissionLevel);
-
         String id = getIdFromResult(response);
         context.getCurrentXmlTest().addParameter("id", id);
+        assertJsonValue(response, NAME, boardName);
+        assertJsonPermissionValue(response, PERMISSION, permissionLevel);
 
         requestBuilder()
                 .setMethod(Method.DELETE)
