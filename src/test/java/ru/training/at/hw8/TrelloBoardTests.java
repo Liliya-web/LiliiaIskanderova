@@ -16,15 +16,26 @@ import static ru.training.at.hw8.matchers.Matchers.assertJsonValue;
 
 
 import io.restassured.http.Method;
+import org.testng.ITestContext;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import ru.training.at.hw8.beans.TrelloResponse;
 import ru.training.at.hw8.constants.PermissionLevel;
 import ru.training.at.hw8.core.DataProviderForTrello;
 
 public class TrelloBoardTests {
+
+    @AfterMethod(alwaysRun = true)
+    public void tearDown(ITestContext context) {
+        requestBuilder()
+                .setMethod(Method.DELETE)
+                .buildRequest()
+                .sendRequest(context.getCurrentXmlTest().getParameter("id"));
+    }
+
     @Test(dataProvider = "defaultBoardDataProvider",
             dataProviderClass = DataProviderForTrello.class)
-    public void createDefaultBoardTest(String boardName, PermissionLevel permissionPrivate) {
+    public void createDefaultBoardTest(ITestContext context, String boardName, PermissionLevel permissionPrivate) {
         TrelloResponse response = getAnswer(
                 requestBuilder()
                         .setMethod(Method.POST)
@@ -33,13 +44,12 @@ public class TrelloBoardTests {
                         .sendRequest());
         assertJsonValue(response, NAME, boardName);
         assertJsonPermissionValue(response, PERMISSION, permissionPrivate);
-
-        deleteBoard(getIdFromResult(response));
+        context.getCurrentXmlTest().addParameter("id", getIdFromResult(response));
     }
 
     @Test(dataProvider = "orgBoardWithDescriptionDataProvider",
             dataProviderClass = DataProviderForTrello.class)
-    public void createBoardWithCustomParametersTest(String boardName, String description, PermissionLevel permissionOrg) {
+    public void createBoardWithCustomParametersTest(ITestContext context, String boardName, String description, PermissionLevel permissionOrg) {
         TrelloResponse response = getAnswer(
                 requestBuilder()
                         .setMethod(Method.POST)
@@ -52,12 +62,12 @@ public class TrelloBoardTests {
         assertJsonValue(response, DESC, description);
         assertJsonPermissionValue(response, PERMISSION, permissionOrg);
 
-        deleteBoard(getIdFromResult(response));
+        context.getCurrentXmlTest().addParameter("id", getIdFromResult(response));
     }
 
     @Test(dataProvider = "publicBoardWithTwoNamesDescriptionLabelNameDataProvider",
             dataProviderClass = DataProviderForTrello.class)
-    public void updateDefaultBoardTest(String defaultBoardName, String newBoardName, String description,
+    public void updateDefaultBoardTest(ITestContext context, String defaultBoardName, String newBoardName, String description,
                                        PermissionLevel permissionPublic, String labelName) throws InterruptedException {
         TrelloResponse responsePost = getAnswer(
                 requestBuilder()
@@ -83,13 +93,14 @@ public class TrelloBoardTests {
         assertJsonPermissionValue(responsePut, PERMISSION, permissionPublic);
         assertJsonLabelValue(responsePut, PURPLE, labelName);
 
-        deleteBoard(id);
+        context.getCurrentXmlTest().addParameter("id", id);
     }
 
     @Test(dataProvider = "publicBoardWithTwoNamesTwoDescriptionsLabelNameDataProvider",
             dataProviderClass = DataProviderForTrello.class)
-    public void updateBoardWithCustomParametersTest(String defaultBoardName, String newBoardName, String description,
-                                                    String newDescription, PermissionLevel permissionPublic, String labelName) {
+    public void updateBoardWithCustomParametersTest(ITestContext context, String defaultBoardName, String newBoardName,
+                                                    String description, String newDescription,
+                                                    PermissionLevel permissionPublic, String labelName) {
         TrelloResponse responsePost = getAnswer(
                 requestBuilder()
                         .setMethod(Method.POST)
@@ -118,12 +129,13 @@ public class TrelloBoardTests {
         assertJsonPermissionValue(responsePut, PERMISSION, permissionPublic);
         assertJsonLabelValue(responsePut, PURPLE, labelName);
 
-        deleteBoard(id);
+        context.getCurrentXmlTest().addParameter("id", id);
     }
 
     @Test(dataProvider = "boardsWithDifferentPermissionsDataProvider",
             dataProviderClass = DataProviderForTrello.class)
-    public void getBoardsWithDifferentPermissionsTest(String boardName, PermissionLevel permissionLevel) {
+    public void getBoardsWithDifferentPermissionsTest(ITestContext context, String boardName,
+                                                      PermissionLevel permissionLevel) {
         TrelloResponse responsePost = getAnswer(
                 requestBuilder()
                         .setMethod(Method.POST)
@@ -145,7 +157,7 @@ public class TrelloBoardTests {
         assertJsonValue(responseGet, NAME, boardName);
         assertJsonPermissionValue(responseGet, PERMISSION, permissionLevel);
 
-        deleteBoard(id);
+        context.getCurrentXmlTest().addParameter("id", id);
     }
 
     @Test(dataProvider = "boardsWithDifferentPermissionsDataProvider",
@@ -163,7 +175,13 @@ public class TrelloBoardTests {
 
         String id = getIdFromResult(response);
 
-        deleteBoard(id);
+        requestBuilder()
+                .setMethod(Method.DELETE)
+                .buildRequest()
+                .sendRequest(id)
+                .then()
+                .assertThat()
+                .spec(goodResponseSpecification());
 
         requestBuilder()
                 .setMethod(Method.GET)
@@ -172,15 +190,5 @@ public class TrelloBoardTests {
                 .then()
                 .assertThat()
                 .spec(notFoundResponseSpecification());
-    }
-
-    private void deleteBoard(String id) {
-        requestBuilder()
-                .setMethod(Method.DELETE)
-                .buildRequest()
-                .sendRequest(id)
-                .then()
-                .assertThat()
-                .spec(goodResponseSpecification());
     }
 }
