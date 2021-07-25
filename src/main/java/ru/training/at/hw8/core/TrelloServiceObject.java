@@ -1,7 +1,13 @@
 package ru.training.at.hw8.core;
 
 import static org.hamcrest.Matchers.lessThan;
-import static ru.training.at.hw8.constants.ParameterName.*;
+import static ru.training.at.hw8.constants.ParameterName.API_KEY;
+import static ru.training.at.hw8.constants.ParameterName.API_TOKEN;
+import static ru.training.at.hw8.constants.ParameterName.BOARD_NAME;
+import static ru.training.at.hw8.constants.ParameterName.DESCRIPTION;
+import static ru.training.at.hw8.constants.ParameterName.PERMISSION_LEVEL;
+import static ru.training.at.hw8.constants.ParameterName.PERMISSION_LEVEL_CREATE;
+import static ru.training.at.hw8.constants.ParameterName.PURPLE_LABEL_NAME;
 import static ru.training.at.hw8.constants.SingleValueParameter.KEY;
 import static ru.training.at.hw8.constants.SingleValueParameter.TOKEN;
 
@@ -25,7 +31,7 @@ import ru.training.at.hw8.constants.PermissionLevel;
 
 public class TrelloServiceObject {
     public static final String STRING_TRELLO_URI_FOR_BOARD = "https://trello.com/1/boards/";
-    public static final URI TRELLO_URI_FOR_BOARD = URI.create("https://trello.com/1/boards/");
+    public static final URI TRELLO_URI_FOR_BOARD = URI.create(STRING_TRELLO_URI_FOR_BOARD);
 
     private final Method requestMethod;
     private final Map<String, String> parameters;

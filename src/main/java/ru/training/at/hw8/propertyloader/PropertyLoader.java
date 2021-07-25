@@ -27,12 +27,4 @@ public class PropertyLoader {
         }
         return null;
     }
-
-    public static String getKey() {
-        return propertiesInstance.getProperty("KEY");
-    }
-
-    public static String getToken() {
-        return propertiesInstance.getProperty("TOKEN");
-    }
 }

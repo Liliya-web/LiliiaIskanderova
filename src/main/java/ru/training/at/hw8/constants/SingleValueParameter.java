@@ -1,10 +1,8 @@
 package ru.training.at.hw8.constants;
 
-import ru.training.at.hw8.propertyloader.PropertyLoader;
+import static ru.training.at.hw8.propertyloader.PropertyLoader.getProperties;
 
 import java.util.Properties;
-
-import static ru.training.at.hw8.propertyloader.PropertyLoader.*;
 
 public class SingleValueParameter {
     private static final Properties envProperties = getProperties();

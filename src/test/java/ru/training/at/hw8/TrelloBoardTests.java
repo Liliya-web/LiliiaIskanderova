@@ -1,19 +1,28 @@
 package ru.training.at.hw8;
 
-import static ru.training.at.hw8.constants.ResponseField.*;
-import static ru.training.at.hw8.core.TrelloServiceObject.*;
-import static ru.training.at.hw8.matchers.Matchers.*;
+import static ru.training.at.hw8.constants.ResponseField.DESC;
+import static ru.training.at.hw8.constants.ResponseField.ID;
+import static ru.training.at.hw8.constants.ResponseField.NAME;
+import static ru.training.at.hw8.constants.ResponseField.PERMISSION;
+import static ru.training.at.hw8.constants.ResponseField.PURPLE;
+import static ru.training.at.hw8.core.TrelloServiceObject.getAnswer;
+import static ru.training.at.hw8.core.TrelloServiceObject.getIdFromResult;
+import static ru.training.at.hw8.core.TrelloServiceObject.goodResponseSpecification;
+import static ru.training.at.hw8.core.TrelloServiceObject.notFoundResponseSpecification;
+import static ru.training.at.hw8.core.TrelloServiceObject.requestBuilder;
+import static ru.training.at.hw8.matchers.Matchers.assertJsonLabelValue;
+import static ru.training.at.hw8.matchers.Matchers.assertJsonPermissionValue;
+import static ru.training.at.hw8.matchers.Matchers.assertJsonValue;
 
 
 import io.restassured.http.Method;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import ru.training.at.hw8.beans.TrelloResponse;
 import ru.training.at.hw8.constants.PermissionLevel;
 import ru.training.at.hw8.core.DataProviderForTrello;
 
 public class TrelloBoardTests {
-    @Test(dataProvider = "createDefaultBoardDataProvider",
+    @Test(dataProvider = "defaultBoardDataProvider",
             dataProviderClass = DataProviderForTrello.class)
     public void createDefaultBoardTest(String boardName, PermissionLevel permissionPrivate) {
         TrelloResponse response = getAnswer(
@@ -28,7 +37,7 @@ public class TrelloBoardTests {
         deleteBoard(getIdFromResult(response));
     }
 
-    @Test(dataProvider = "createBoardWithCustomParametersDataProvider",
+    @Test(dataProvider = "orgBoardWithDescriptionDataProvider",
             dataProviderClass = DataProviderForTrello.class)
     public void createBoardWithCustomParametersTest(String boardName, String description, PermissionLevel permissionOrg) {
         TrelloResponse response = getAnswer(
@@ -46,7 +55,7 @@ public class TrelloBoardTests {
         deleteBoard(getIdFromResult(response));
     }
 
-    @Test(dataProvider = "updateBoardDataProvider",
+    @Test(dataProvider = "publicBoardWithTwoNamesDescriptionLabelNameDataProvider",
             dataProviderClass = DataProviderForTrello.class)
     public void updateDefaultBoardTest(String defaultBoardName, String newBoardName, String description,
                                        PermissionLevel permissionPublic, String labelName) throws InterruptedException {
@@ -77,7 +86,7 @@ public class TrelloBoardTests {
         deleteBoard(id);
     }
 
-    @Test(dataProvider = "updateBoardWithCustomParametersDataProvider",
+    @Test(dataProvider = "publicBoardWithTwoNamesTwoDescriptionsLabelNameDataProvider",
             dataProviderClass = DataProviderForTrello.class)
     public void updateBoardWithCustomParametersTest(String defaultBoardName, String newBoardName, String description,
                                                     String newDescription, PermissionLevel permissionPublic, String labelName) {
@@ -112,7 +121,7 @@ public class TrelloBoardTests {
         deleteBoard(id);
     }
 
-    @Test(dataProvider = "createBoardsWithDifferentPermissionsDataProvider",
+    @Test(dataProvider = "boardsWithDifferentPermissionsDataProvider",
             dataProviderClass = DataProviderForTrello.class)
     public void getBoardsWithDifferentPermissionsTest(String boardName, PermissionLevel permissionLevel) {
         TrelloResponse responsePost = getAnswer(
@@ -139,7 +148,7 @@ public class TrelloBoardTests {
         deleteBoard(id);
     }
 
-    @Test(dataProvider = "createBoardsWithDifferentPermissionsDataProvider",
+    @Test(dataProvider = "boardsWithDifferentPermissionsDataProvider",
             dataProviderClass = DataProviderForTrello.class)
     public void deleteBoardsWithDifferentPermissionsTest(String boardName, PermissionLevel permissionLevel) {
         TrelloResponse response = getAnswer(

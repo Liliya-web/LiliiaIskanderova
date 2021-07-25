@@ -13,35 +13,35 @@ import org.testng.annotations.DataProvider;
 
 public class DataProviderForTrello {
     @DataProvider
-    public static Object[][] createDefaultBoardDataProvider() {
+    public static Object[][] defaultBoardDataProvider() {
         return new Object[][]{
                 {DEFAULT_BOARD_NAME, PRIVATE}
         };
     }
 
     @DataProvider
-    public static Object[][] createBoardWithCustomParametersDataProvider() {
+    public static Object[][] orgBoardWithDescriptionDataProvider() {
         return new Object[][]{
                 {DEFAULT_BOARD_NAME, BOARD_DESCRIPTION, ORG}
         };
     }
 
     @DataProvider
-    public static Object[][] updateBoardDataProvider() {
+    public static Object[][] publicBoardWithTwoNamesDescriptionLabelNameDataProvider() {
         return new Object[][]{
                 {DEFAULT_BOARD_NAME, NEW_BOARD_NAME, BOARD_DESCRIPTION, PUBLIC, LABEL_NAME}
         };
     }
 
     @DataProvider
-    public static Object[][] updateBoardWithCustomParametersDataProvider() {
+    public static Object[][] publicBoardWithTwoNamesTwoDescriptionsLabelNameDataProvider() {
         return new Object[][]{
                 {DEFAULT_BOARD_NAME, NEW_BOARD_NAME, BOARD_DESCRIPTION, NEW_BOARD_DESCRIPTION, PUBLIC, LABEL_NAME}
         };
     }
 
     @DataProvider
-    public static Object[][] createBoardsWithDifferentPermissionsDataProvider() {
+    public static Object[][] boardsWithDifferentPermissionsDataProvider() {
         return new Object[][]{
                 {DEFAULT_BOARD_NAME, PRIVATE},
                 {DEFAULT_BOARD_NAME, PUBLIC},
