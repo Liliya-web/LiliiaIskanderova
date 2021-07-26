@@ -14,7 +14,6 @@ import static ru.training.at.hw8.matchers.Matchers.assertJsonLabelValue;
 import static ru.training.at.hw8.matchers.Matchers.assertJsonPermissionValue;
 import static ru.training.at.hw8.matchers.Matchers.assertJsonValue;
 
-
 import io.restassured.http.Method;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
