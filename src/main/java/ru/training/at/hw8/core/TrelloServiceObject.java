@@ -1,16 +1,5 @@
 package ru.training.at.hw8.core;
 
-import static org.hamcrest.Matchers.lessThan;
-import static ru.training.at.hw8.constants.ParameterName.API_KEY;
-import static ru.training.at.hw8.constants.ParameterName.API_TOKEN;
-import static ru.training.at.hw8.constants.ParameterName.BOARD_NAME;
-import static ru.training.at.hw8.constants.ParameterName.DESCRIPTION;
-import static ru.training.at.hw8.constants.ParameterName.PERMISSION_LEVEL;
-import static ru.training.at.hw8.constants.ParameterName.PERMISSION_LEVEL_CREATE;
-import static ru.training.at.hw8.constants.ParameterName.PURPLE_LABEL_NAME;
-import static ru.training.at.hw8.constants.SingleValueParameter.KEY;
-import static ru.training.at.hw8.constants.SingleValueParameter.TOKEN;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import io.restassured.RestAssured;
@@ -21,13 +10,25 @@ import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-
-import java.net.URI;
-import java.util.*;
-
 import org.apache.http.HttpStatus;
 import ru.training.at.hw8.beans.TrelloResponse;
 import ru.training.at.hw8.constants.PermissionLevel;
+
+import java.net.URI;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import static org.hamcrest.Matchers.lessThan;
+import static ru.training.at.hw8.constants.ParameterName.API_KEY;
+import static ru.training.at.hw8.constants.ParameterName.API_TOKEN;
+import static ru.training.at.hw8.constants.ParameterName.BOARD_NAME;
+import static ru.training.at.hw8.constants.ParameterName.DESCRIPTION;
+import static ru.training.at.hw8.constants.ParameterName.PERMISSION_LEVEL;
+import static ru.training.at.hw8.constants.ParameterName.PERMISSION_LEVEL_CREATE;
+import static ru.training.at.hw8.constants.ParameterName.PURPLE_LABEL_NAME;
+import static ru.training.at.hw8.constants.SingleValueParameter.KEY;
+import static ru.training.at.hw8.constants.SingleValueParameter.TOKEN;
 
 public class TrelloServiceObject {
     public static final String STRING_TRELLO_URI_FOR_BOARD = "https://trello.com/1/boards/";

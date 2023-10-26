@@ -1,8 +1,5 @@
 package ru.training.at.hw2.ex2;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +8,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class Exercise2Tests {
 
@@ -56,7 +56,7 @@ public class Exercise2Tests {
         assertEquals(usernameDisplayed.getText(), "ROMAN IOVLEV");
 
         //        5. Open through the header menu Service -> Different Elements Page
-        WebElement serviceMenu = driver.findElement(By.cssSelector("a[data-toggle=\"dropdown\"]"));
+        WebElement serviceMenu = driver.findElement(By.cssSelector("ul.nav .dropdown-toggle"));
         serviceMenu.click();
         WebElement differentElementsMenu = driver.findElement(By.xpath("//a[text()='Different elements']"));
         differentElementsMenu.click();

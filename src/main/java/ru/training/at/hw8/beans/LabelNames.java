@@ -1,9 +1,10 @@
 
 package ru.training.at.hw8.beans;
 
-import javax.annotation.processing.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import javax.annotation.processing.Generated;
 
 @Generated("jsonschema2pojo")
 public class LabelNames {
@@ -28,8 +29,8 @@ public class LabelNames {
         sb.append('=');
         sb.append(((this.purple == null)?"<null>":this.purple));
         sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
+        if (sb.charAt((sb.length() - 1)) == ',') {
+            sb.setCharAt((sb.length() - 1), ']');
         } else {
             sb.append(']');
         }
@@ -39,7 +40,7 @@ public class LabelNames {
     @Override
     public int hashCode() {
         int result = 1;
-        result = ((result* 31)+((this.purple == null)? 0 :this.purple.hashCode()));
+        result = ((result * 31)+((this.purple == null)? 0 :this.purple.hashCode()));
         return result;
     }
 

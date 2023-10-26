@@ -1,9 +1,6 @@
 package ru.training.at.hw2.ex1;
 
-import static org.testng.Assert.assertEquals;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
-import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +8,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class Exercise1Tests {
 
@@ -72,13 +74,15 @@ public class Exercise1Tests {
 
         //        6. Assert that there are 4 images on the Index Page and they are displayed
         //        Image 1
-        driver.findElement(By.xpath("//span[@class=\"icons-benefit icon-practise\"]"));
+        WebElement practiceIcon = driver.findElement(By.cssSelector(".icon-practise"));
+        assertTrue(practiceIcon.isDisplayed(), "Practice icon is not displayed");
         //        Image 2
-        driver.findElement(By.xpath("//span[@class=\"icons-benefit icon-custom\"]"));
+        WebElement customIcon = driver.findElement(By.xpath("//span[@class=\"icons-benefit icon-custom\"]"));
+        assertTrue(customIcon.isDisplayed(), "Custom icon is not displayed");
         //        Image 3
-        driver.findElement(By.xpath("//span[@class=\"icons-benefit icon-multi\"]"));
+        driver.findElement(By.xpath("//span[@class=\"icons-benefit icon-multi\"]")).isDisplayed();
         //        Image 4
-        driver.findElement(By.xpath("//span[@class=\"icons-benefit icon-base\"]"));
+        driver.findElement(By.xpath("//span[@class=\"icons-benefit icon-base\"]")).isDisplayed();
 
         //        7. Assert that there are 4 texts on the Index Page under icons and they have proper text
         //        Text 1
@@ -102,7 +106,8 @@ public class Exercise1Tests {
 
         //        9. Switch to the iframe and check that there is “Frame Button” in the iframe
         driver.switchTo().frame(iframe);
-        driver.findElement(By.id("frame-button"));
+        WebElement iframeButton = driver.findElement(By.id("frame-button"));
+        assertTrue(iframeButton.isDisplayed(), "Iframe button is not displayed");
 
         //        10. Switch to original window back
         driver.switchTo().defaultContent();
